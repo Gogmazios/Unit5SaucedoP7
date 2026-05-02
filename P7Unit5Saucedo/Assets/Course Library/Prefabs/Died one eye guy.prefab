@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2176154731507658220}
   m_Layer: 0
   m_Name: Died one eye guy
-  m_TagString: Untagged
+  m_TagString: Bad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6944602257655102829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.3905469, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717981e144356ed43b0d8dac88dced22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointValue: -100
+  EP: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
 --- !u!1001 &517923148855113504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,27 +166,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4859273592492888, guid: 9fd6919c6e21fed429290a0f10ca4548, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11999998
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4859273592492888, guid: 9fd6919c6e21fed429290a0f10ca4548, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.120000005
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4859273592492888, guid: 9fd6919c6e21fed429290a0f10ca4548, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.120000005
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4859273592492888, guid: 9fd6919c6e21fed429290a0f10ca4548, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0013812542
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4859273592492888, guid: 9fd6919c6e21fed429290a0f10ca4548, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.008491516
+      value: 0.014
       objectReference: {fileID: 0}
     - target: {fileID: 4859273592492888, guid: 9fd6919c6e21fed429290a0f10ca4548, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1536
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4859273592492888, guid: 9fd6919c6e21fed429290a0f10ca4548, type: 3}
       propertyPath: m_LocalRotation.w
