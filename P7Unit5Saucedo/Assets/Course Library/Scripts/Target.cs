@@ -12,9 +12,11 @@ public class Target : MonoBehaviour
     private float ySpawnPos = -6;
     private GameManager gameManager;
     public int pointValue;
-    public ParticleSystem EP; 
+    public ParticleSystem EP;
     //explosionParticle = EP
-    
+    public AudioClip Destroysound;
+    private AudioSource PA; 
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +26,7 @@ public class Target : MonoBehaviour
         targetRB.AddForce(RandomForce(), ForceMode.Impulse);
         targetRB.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = RandomSpawnPos();
+        PA = GetComponent<AudioSource>(); 
 
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); 
         
@@ -50,20 +53,22 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
+        PA.PlayOneShot(Destroysound, 1.0f);
         if (gameManager.isGameActive)
         {
             Destroy(gameObject);
             gameManager.UpdateScore(pointValue);
             Instantiate(EP, transform.position, EP.transform.rotation);
+           
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject); 
-        if (!gameObject.CompareTag("Bad"))
+        if (!gameObject.CompareTag("Bad") && gameManager.isGameActive)
         {
-            gameManager.GameOver(); 
+            gameManager.UpdateLives(-1); 
         }
     }
 }
