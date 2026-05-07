@@ -31,7 +31,11 @@ public class ClickAndSwipe : MonoBehaviour
 
     }
 
-
+    void UpdateComponents()
+    {
+        trail.enabled = swiping;
+        col.enabled = swiping;  
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,13 +48,28 @@ public class ClickAndSwipe : MonoBehaviour
     {
         if (gameManager.isGameActive)
         {
-            //Put the if,  else if,  and if in here
+            if (Input.GetMouseButtonDown(0))
+            {
+                swiping = true;
+                UpdateComponents(); 
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                swiping = false;
+                UpdateComponents();
+            }
+            if (swiping)
+            {
+                UpdateMousePosition(); 
+            }
+        }
+    }
 
-
-
-
-
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Target>())
+        {
+            collision.gameObject.GetComponent<Target>().Destroytarget(); 
         }
     }
 }

@@ -51,7 +51,19 @@ public class Target : MonoBehaviour
         
     }
 
-    private void OnMouseDown()
+    //private void OnMouseDown()
+    //{
+    //    PA.PlayOneShot(Destroysound, 1.0f);
+     //   if (gameManager.isGameActive)
+       // {
+         //   Destroy(gameObject);
+           // gameManager.UpdateScore(pointValue);
+            //nstantiate(EP, transform.position, EP.transform.rotation);
+           
+        //}
+    //}
+
+    public void Destroytarget()
     {
         PA.PlayOneShot(Destroysound, 1.0f);
         if (gameManager.isGameActive)
@@ -59,7 +71,6 @@ public class Target : MonoBehaviour
             Destroy(gameObject);
             gameManager.UpdateScore(pointValue);
             Instantiate(EP, transform.position, EP.transform.rotation);
-           
         }
     }
 
