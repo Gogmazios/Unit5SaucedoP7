@@ -15,7 +15,7 @@ public class Target : MonoBehaviour
     public ParticleSystem EP;
     //explosionParticle = EP
     public AudioClip Destroysound;
-    private AudioSource PA; 
+    private AudioSource PA;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,21 +26,21 @@ public class Target : MonoBehaviour
         targetRB.AddForce(RandomForce(), ForceMode.Impulse);
         targetRB.AddTorque(RandomTorque(), RandomTorque(), RandomTorque(), ForceMode.Impulse);
         transform.position = RandomSpawnPos();
-        PA = GetComponent<AudioSource>(); 
+        PA = GetComponent<AudioSource>();
 
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); 
-        
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
         Vector3 RandomForce()
         {
             return Vector3.up * Random.Range(minS, maxS);
         }
         float RandomTorque()
         {
-            return Random.Range(-maxT, maxT); 
+            return Random.Range(-maxT, maxT);
         }
         Vector3 RandomSpawnPos()
         {
-            return new Vector3(Random.Range(-xRange, xRange), ySpawnPos); 
+            return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
         }
 
     }
@@ -48,38 +48,47 @@ public class Target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+
+
+
 
     //private void OnMouseDown()
     //{
     //    PA.PlayOneShot(Destroysound, 1.0f);
-     //   if (gameManager.isGameActive)
-       // {
-         //   Destroy(gameObject);
-           // gameManager.UpdateScore(pointValue);
-            //nstantiate(EP, transform.position, EP.transform.rotation);
-           
-        //}
+    //   if (gameManager.isGameActive)
+    // {
+    //   Destroy(gameObject);
+    // gameManager.UpdateScore(pointValue);
+    //nstantiate(EP, transform.position, EP.transform.rotation);
+
     //}
+    //}
+   
+  
 
     public void Destroytarget()
     {
         PA.PlayOneShot(Destroysound, 1.0f);
         if (gameManager.isGameActive)
         {
-            Destroy(gameObject);
             gameManager.UpdateScore(pointValue);
             Instantiate(EP, transform.position, EP.transform.rotation);
+            Destroy(gameObject);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject); 
+        Destroytarget();
+        Destroy(gameObject);
         if (!gameObject.CompareTag("Bad") && gameManager.isGameActive)
         {
             gameManager.UpdateLives(-1); 
         }
     }
+
+
 }
