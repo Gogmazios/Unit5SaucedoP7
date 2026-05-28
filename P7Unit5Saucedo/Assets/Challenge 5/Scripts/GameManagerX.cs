@@ -32,8 +32,9 @@ public class GameManagerX : MonoBehaviour
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
+        Timer();
         titleScreen.SetActive(false);
-        timer = 60; 
+        timer = 20; 
     }
 
     // While game is active spawn a random target
@@ -92,7 +93,15 @@ public class GameManagerX : MonoBehaviour
 
     void Update()
     {
+        if (isGameActive)
+        {
+            Timer(); 
+        }
         if (score <= -1)
+        {
+            GameOver(); 
+        }
+        if (timer < 0)
         {
             GameOver(); 
         }
